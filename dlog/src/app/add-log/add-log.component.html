@@ -1,0 +1,19 @@
+<div class="container d-flex justify-content-center">
+<div class="col-10" style="margin-top: 25px;">
+    <div class="field">
+        <label><h1>Title</h1></label><input type="text" [(ngModel)]="log.title">
+    </div>
+    <div class="field">
+        <label><h1>Category</h1></label><input type="text" [(ngModel)]="log.category">
+    </div>
+    <div class="field">
+        <label><h1>Date</h1></label><br><input type="date" [(ngModel)]="log.date">
+    </div>
+    <div class="field">
+        <label><h1>Description</h1></label><br><textarea type="text" [(ngModel)]="log.description"></textarea>
+    </div>
+    <div class="col-12" style="margin-bottom: 50px;">
+        <button mat-raised-button class="greenBtn" style="float:right;margin-bottom:25px;" (click)="addLog()">Add</button>
+    </div>
+</div>
+</div>
