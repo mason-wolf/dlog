@@ -1,15 +1,15 @@
 <div class="container d-flex justify-content-center">
 <div class="col-10" style="margin-top: 25px;">
-    <div class="field">
-        <label><h1>Title</h1></label><input type="text" [(ngModel)]="log.title">
+    <div class="field-container">
+        <label><h1>Title</h1></label><input type="text" [(ngModel)]="log.title" class="field">
     </div>
-    <div class="field">
-        <label><h1>Category</h1></label><input type="text" [(ngModel)]="log.category">
+    <div class="field-container">
+        <label><h1>Category</h1></label><input type="text" [(ngModel)]="log.category" class="field">
     </div>
-    <div class="field">
-        <label><h1>Date</h1></label><br><input type="date" [(ngModel)]="log.date">
+    <div class="field-container">
+        <label><h1>Date</h1></label><br><input type="date" [(ngModel)]="log.date" class="field">
     </div>
-    <div class="field">
+    <div class="field-container">
         <label><h1>Description</h1></label><br><textarea type="text" [(ngModel)]="log.description"></textarea>
     </div>
     <div class="col-12" style="margin-bottom: 50px;">

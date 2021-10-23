@@ -1,0 +1,21 @@
+<div class="container">
+    <div class="col-12" style="margin-top:25px;">
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" class="logTable">
+
+            <ng-container matColumnDef="date">
+              <th mat-header-cell *matHeaderCellDef>Date</th>
+              <td mat-cell *matCellDef="let log">{{ log.Date }}</td>
+            </ng-container>
+        
+            <ng-container matColumnDef="description">
+                <th mat-header-cell *matHeaderCellDef>Description</th>
+                <td mat-cell *matCellDef="let log"><a [routerLink]="['/view-log', log.Id]">{{ log.Description }} </a></td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+          
+          <mat-paginator [pageSizeOptions]="[10, 25, 50]"style="margin-top:25px;"></mat-paginator>
+    </div>
+</div>

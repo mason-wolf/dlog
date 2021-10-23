@@ -18,7 +18,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     color: #fff;
 }
 
-input {
+.field {
     width: 100%;
     border:none;
     border: 1px solid #ccc;
@@ -28,11 +28,11 @@ input {
     padding:0.5em;
 }
 
-input:focus {
+.field:focus {
     outline: none;
 }
 
-.field {
+.field-container {
     padding: 1em;
 }
 
@@ -48,4 +48,16 @@ textarea:focus {
     font-size: 18px;
     font-weight: 100;
     padding:0.5em;
+}
+
+.logTable {
+    width: 100%;
+}
+
+.card {
+    padding: 1em;
+}
+
+.card-header {
+    border-bottom: none;
 }

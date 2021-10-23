@@ -3,18 +3,23 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule} from '@angular/material/paginator';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { AddLogComponent } from './add-log/add-log.component';
-import { HeaderComponent } from './header/header.component';
+import { AddLogComponent } from './components/add-log/add-log.component';
+import { HeaderComponent } from './components/header/header.component';
 import {MatButtonModule} from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
-import { ViewLogComponent } from './view-log/view-log.component';
+import { ViewLogComponent } from './components/view-log/view-log.component';
 import {MatIconModule} from '@angular/material/icon';
-import { SearchLogsComponent } from './search-logs/search-logs.component';
+import { SearchLogsComponent } from './components/search-logs/search-logs.component';
+import { LogsByCategoryComponent } from './components/logs-by-category/logs-by-category.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatInputModule} from '@angular/material/input';
+import { MatNativeDateModule } from '@angular/material/core';
+import { LogsByDateComponent } from './components/logs-by-date/logs-by-date.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +28,9 @@ import { SearchLogsComponent } from './search-logs/search-logs.component';
     AddLogComponent,
     HeaderComponent,
     ViewLogComponent,
-    SearchLogsComponent
+    SearchLogsComponent,
+    LogsByCategoryComponent,
+    LogsByDateComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +42,10 @@ import { SearchLogsComponent } from './search-logs/search-logs.component';
     NgbModule,
     MatButtonModule,
     FormsModule,
-    MatIconModule
+    MatIconModule,
+    MatDatepickerModule,
+    MatInputModule,
+    MatNativeDateModule 
   ],
   providers: [],
   bootstrap: [AppComponent]

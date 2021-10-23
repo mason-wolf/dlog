@@ -73,3 +73,20 @@ def searchLogs(searchTerm):
     query = "SELECT * FROM log WHERE description LIKE %s"
     result = executeQuery(query, ("%" + searchTerm + "%",))
     return result
+
+def getLogCategories():
+    query = "SELECT Category, Count(*) as Count FROM log GROUP BY Category"
+    result = executeQuery(query, ())
+    return result
+
+def getLogsByCategory(category):
+    query = "SELECT * FROM log WHERE Category LIKE %s"
+    result = executeQuery(query, ("%" + category + "%",))
+    return result
+
+def getLogsByDate(startDate, endDate):
+    query = "SELECT * FROM log WHERE (Date BETWEEN %s AND %s) ORDER BY Date DESC"
+    print(startDate)
+    print(endDate)
+    result = executeQuery(query, (startDate, endDate),)
+    return result

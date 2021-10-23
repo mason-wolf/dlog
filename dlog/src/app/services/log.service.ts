@@ -10,10 +10,23 @@ export class LogService {
   constructor(private httpClient : HttpClient) { }
 
   serverURL = "http://localhost:5000/"
+
   getLogs() : Observable<any> {
     return this.httpClient.get(this.serverURL + "getLogs");
   }
 
+  getLogCategories() : Observable<any> {
+    return this.httpClient.get(this.serverURL + "getLogCategories");
+  }
+
+  getLogsByCategory(category) : Observable<any> {
+    return this.httpClient.post(this.serverURL + "getLogsByCategory", JSON.stringify(category))
+  }
+
+  getLogsByDate(startDate, endDate) {
+    return this.httpClient.post(this.serverURL + "getLogsByDate", { startDate : startDate, endDate : endDate})
+  }
+  
   addLog(log : any) {
     return this.httpClient.post(this.serverURL + "addLog",  JSON.stringify(log)).subscribe(value => {
       console.log(value);

@@ -1,7 +1,7 @@
 import { formatDate } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { LogService } from '../services/log.service';
+import { LogService } from '../../services/log.service';
 import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({

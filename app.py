@@ -53,6 +53,26 @@ def searchLogs():
     payload = json.loads(payload)
     searchTerm = payload
     return jsonify(log.searchLogs(searchTerm))
+
+@app.route('/getLogCategories', methods=['GET'])
+def getLogCategories():
+    return jsonify(log.getLogCategories())
+
+@app.route('/getLogsByCategory', methods=['POST'])
+def getLogsByCategory():
+    payload = request.data
+    payload = json.loads(payload)
+    category = payload
+    print(category)
+    return jsonify(log.getLogsByCategory(category))
+
+@app.route('/getLogsByDate', methods=['POST'])
+def getLogsByDate():
+    payload = request.data
+    payload = json.loads(payload)
+    startDate = payload['startDate']
+    endDate = payload['endDate']
+    return jsonify(log.getLogsByDate(startDate, endDate))
     
 if __name__ == '__main__':
     app.run()

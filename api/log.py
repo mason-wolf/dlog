@@ -17,3 +17,12 @@ def deleteLog(logId):
 
 def searchLogs(searchTerm):
     return logdb.searchLogs(searchTerm)
+
+def getLogCategories():
+    return logdb.getLogCategories()
+
+def getLogsByCategory(category):
+    return logdb.getLogsByCategory(category)
+
+def getLogsByDate(startDate, endDate):
+    return logdb.getLogsByDate(startDate, endDate)

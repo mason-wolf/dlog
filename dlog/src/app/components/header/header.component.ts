@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { LogService } from '../services/log.service';
+import { LogService } from '../../services/log.service';
 
 @Component({
   selector: 'app-header',
