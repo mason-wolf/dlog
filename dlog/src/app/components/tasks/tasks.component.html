@@ -1,0 +1,68 @@
+<div class="container">
+    <div class="row">
+    <div class="col-4" style="margin-top:50px;">
+        <div class="card" style="display:inline-block;width:100%;">
+            <div class="card-header">
+                <h1>Projects</h1>
+            </div>
+            <div *ngIf="projects.length == 0; else showProjects;" style="text-align:center;">
+                You have no projects yet.
+            </div>
+            <ng-template #showProjects>
+                <div *ngFor="let project of projects" class="projects">
+                    <button type="button" class="projectBtn" (click)="showProject(project)">{{ project.project_name }}</button>
+                </div>
+            </ng-template>
+            <input type="text" class="field" style="margin-top:25px;" [(ngModel)]="projectName">
+            <button mat-raised-button class="greenBtn" style="float:right;margin-top:15px;" (click)="addProject()">Add Project</button>
+        </div>
+    </div>
+    <div class="col-8" style="margin-top:50px;">
+        <div class="card">
+            <div class="row">
+            <div class="col-3" style="padding:1em;padding-left:2em;">
+                <h1 *ngIf="project==null">Tasks</h1>
+                <h1 *ngIf="project!=null">{{ project.project_name }}</h1>
+            </div>
+            <div class="col-9" style="text-align:right;" *ngIf="project!=null">
+                <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                    <mat-icon>more_vert</mat-icon>
+                  </button>
+                  <mat-menu #menu="matMenu" style="float:right;">
+                    <button mat-menu-item>
+                      <mat-icon>delete</mat-icon>
+                      <span>Delete Project</span>
+                    </button>
+                    <button mat-menu-item>
+                        <mat-icon>done</mat-icon>
+                        <span>View Completed Tasks</span>
+                      </button>
+                  </mat-menu>
+            </div>
+            </div>
+            <div *ngIf="project==null; else showProjectTasks" style="text-align:center;height:300px;margin-top:100px;font-size:16px;">
+                Select a project to manage tasks.
+            </div>
+            <ng-template #showProjectTasks>
+                <div class="row">
+                    <div class="col-8">
+                        <input type="text" class="field" placeholder="New Task" [(ngModel)]="newTask.Description" style="margin-bottom:15px;">   
+                    </div>
+                    <div class="col-4">
+                        <input type="text" class="field" placeholder="Category" [(ngModel)]="newTask.Category" style="margin-bottom:15px;">   
+                    </div>
+                    <div class="col-12">
+                        <button mat-raised-button class="greenBtn" style="float:right;margin-top:15px;" (click)="addTask()">Add Task</button>
+                    </div>
+                    <div class="col-12" style="margin-top:50px;">
+                        <div class="col-12" *ngFor="let log of logs" class="task">
+                            <a [routerLink]="['/view-log', log.Id]">{{ log.Description }} </a>
+                            <a style="float:right;" class="done">Mark as Done</a>
+                        </div>
+                    </div>
+                </div>
+            </ng-template>
+        </div>
+    </div>
+    </div>
+</div>

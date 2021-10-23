@@ -27,6 +27,10 @@ export class LogService {
     return this.httpClient.post(this.serverURL + "getLogsByDate", { startDate : startDate, endDate : endDate})
   }
   
+  getLogsByProjectId(projectId) : Observable<any> {
+    return this.httpClient.post(this.serverURL + "getLogsByProjectId", JSON.stringify(projectId))
+  }
+
   addLog(log : any) {
     return this.httpClient.post(this.serverURL + "addLog",  JSON.stringify(log)).subscribe(value => {
       console.log(value);

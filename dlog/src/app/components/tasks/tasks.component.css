@@ -1,0 +1,25 @@
+.projects {
+    text-align:center;
+    font-size:19px;
+    padding: .5em;
+}
+
+.projectBtn {
+    border: none;
+    background-color: #fff;
+    color: blue;
+}
+
+.task {
+    padding: 1em;
+    font-size: 15px;
+    width: 100%;
+}
+
+.done {
+    border:1px solid #ccc;
+    border-radius: 15px;
+    padding:.5em;
+    margin-top:-15px;
+    text-decoration: none;
+}

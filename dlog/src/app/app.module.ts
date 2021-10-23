@@ -20,6 +20,8 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatInputModule} from '@angular/material/input';
 import { MatNativeDateModule } from '@angular/material/core';
 import { LogsByDateComponent } from './components/logs-by-date/logs-by-date.component';
+import { TasksComponent } from './components/tasks/tasks.component';
+import {MatMenuModule} from '@angular/material/menu';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,8 @@ import { LogsByDateComponent } from './components/logs-by-date/logs-by-date.comp
     ViewLogComponent,
     SearchLogsComponent,
     LogsByCategoryComponent,
-    LogsByDateComponent
+    LogsByDateComponent,
+    TasksComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +48,8 @@ import { LogsByDateComponent } from './components/logs-by-date/logs-by-date.comp
     MatIconModule,
     MatDatepickerModule,
     MatInputModule,
-    MatNativeDateModule 
+    MatNativeDateModule ,
+    MatMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]

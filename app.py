@@ -1,7 +1,7 @@
 from flask import Flask, request
 from flask import json
 from flask.json import jsonify
-from api import log
+from api import log, project
 from flask_cors import CORS, cross_origin
 
 app = Flask(__name__)
@@ -20,7 +20,9 @@ def addLog():
     category = payload["Category"]
     contents = payload["Contents"]
     date = payload["Date"]
-    return jsonify(log.addLog(description, category, contents, date))
+    status = payload["Status"]
+    project_id = payload["Project_ID"]
+    return jsonify(log.addLog(description, category, contents, date, status, project_id))
 
 @app.route('/getLogById', methods=['POST'])
 def getLogById():
@@ -38,7 +40,9 @@ def updateLog():
     category = payload["Category"]
     contents = payload["Contents"]
     date = payload["Date"]
-    return jsonify(log.updateLog(Id, description, category, contents, date))
+    status = payload["Status"]
+    project_id = payload["Project_ID"]
+    return jsonify(log.updateLog(Id, description, category, contents, date, status, project_id))
 
 @app.route('/deleteLog', methods=['POST'])
 def deleteLog():
@@ -63,8 +67,14 @@ def getLogsByCategory():
     payload = request.data
     payload = json.loads(payload)
     category = payload
-    print(category)
     return jsonify(log.getLogsByCategory(category))
+
+@app.route('/getLogsByProjectId', methods=['POST'])
+def getLogsByProjectId():
+    payload = request.data
+    payload = json.loads(payload)
+    projectId = payload
+    return jsonify(log.getLogsByProjectId(projectId))
 
 @app.route('/getLogsByDate', methods=['POST'])
 def getLogsByDate():
@@ -74,6 +84,17 @@ def getLogsByDate():
     endDate = payload['endDate']
     return jsonify(log.getLogsByDate(startDate, endDate))
     
+@app.route('/getProjects', methods=["GET"])
+def getProjects():
+    return jsonify(project.getProjects())
+
+@app.route('/addProject', methods=['POST'])
+def addProject():
+    payload = request.data
+    payload = json.loads(payload)
+    projectName = payload
+    return jsonify(project.addProject(projectName))
+
 if __name__ == '__main__':
     app.run()
 

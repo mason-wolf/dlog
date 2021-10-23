@@ -1,16 +1,19 @@
-from db import logdb
+from dao import logdb
 
 def getLogs():
     return logdb.getLogs()
 
 def getLogById(logId):
     return logdb.getLogById(logId)
-    
-def addLog(description, category, contents, date):
-    return logdb.addLog(description, category, contents, date)
 
-def updateLog(logId, description, category, contents, date):
-    return logdb.updateLog(logId, description, category, contents, date)
+def getLogsByProjectId(projectId):
+    return logdb.getLogsByProjectId(projectId)
+
+def addLog(description, category, contents, date, status, project_id):
+    return logdb.addLog(description, category, contents, date, status, project_id)
+
+def updateLog(logId, description, category, contents, date, status, project_id):
+    return logdb.updateLog(logId, description, category, contents, date, status, project_id)
 
 def deleteLog(logId):
     return logdb.deleteLog(logId)
@@ -26,3 +29,6 @@ def getLogsByCategory(category):
 
 def getLogsByDate(startDate, endDate):
     return logdb.getLogsByDate(startDate, endDate)
+
+def getProjects(startDate, endDate):
+    return logdb.getProjects(startDate, endDate)

@@ -28,6 +28,8 @@ export class AddLogComponent implements OnInit {
     logObj["Category"] = this.log["category"]
     logObj["Contents"] = this.log["description"]
     logObj["Date"] = this.log["date"]
+    logObj["Status"] = "COMPLETED";
+    logObj["Project_ID"] = null;
 
     if(logObj["Date"] == "") {
       logObj["Date"] = formatDate(new Date(), "MM-dd-yyyy", "en-us");

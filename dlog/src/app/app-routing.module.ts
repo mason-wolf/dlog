@@ -5,6 +5,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { LogsByCategoryComponent } from './components/logs-by-category/logs-by-category.component';
 import { LogsByDateComponent } from './components/logs-by-date/logs-by-date.component';
 import { SearchLogsComponent } from './components/search-logs/search-logs.component';
+import { TasksComponent } from './components/tasks/tasks.component';
 import { ViewLogComponent } from './components/view-log/view-log.component';
 
 const routes: Routes = [
@@ -13,7 +14,8 @@ const routes: Routes = [
   { path: 'view-log/:logId', component: ViewLogComponent },
   { path: 'search-logs/:searchTerm', component : SearchLogsComponent},
   { path: 'logs-by-category/:category', component : LogsByCategoryComponent},
-  { path: 'logs-by-date/:startDate/:endDate', component : LogsByDateComponent}
+  { path: 'logs-by-date/:startDate/:endDate', component : LogsByDateComponent},
+  { path: 'tasks', component : TasksComponent}
 ];
 
 @NgModule({
