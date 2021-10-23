@@ -14,6 +14,7 @@ import {MatButtonModule} from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
 import { ViewLogComponent } from './view-log/view-log.component';
 import {MatIconModule} from '@angular/material/icon';
+import { SearchLogsComponent } from './search-logs/search-logs.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import {MatIconModule} from '@angular/material/icon';
     DashboardComponent,
     AddLogComponent,
     HeaderComponent,
-    ViewLogComponent
+    ViewLogComponent,
+    SearchLogsComponent
   ],
   imports: [
     BrowserModule,

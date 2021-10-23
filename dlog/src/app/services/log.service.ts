@@ -35,4 +35,8 @@ export class LogService {
       console.log(value)
     });
   }
+
+  searchLogs(searchTerm) {
+    return this.httpClient.post(this.serverURL + "searchLogs", JSON.stringify(searchTerm));
+  }
 }

@@ -68,3 +68,8 @@ def deleteLog(logId):
     cursor.close()
     conn.close()
     return json.dumps(result)
+
+def searchLogs(searchTerm):
+    query = "SELECT * FROM log WHERE description LIKE %s"
+    result = executeQuery(query, ("%" + searchTerm + "%",))
+    return result

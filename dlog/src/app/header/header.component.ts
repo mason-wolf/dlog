@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { LogService } from '../services/log.service';
 
 @Component({
   selector: 'app-header',
@@ -7,7 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  searchTerm : string;
+
+  constructor(private router : Router) { }
+
+  search() {
+    this.router.navigate(['/search-logs/', this.searchTerm])
+  }
 
   ngOnInit(): void {
   }

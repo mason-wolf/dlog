@@ -47,6 +47,13 @@ def deleteLog():
     Id = payload
     return jsonify(log.deleteLog(Id))
 
+@app.route('/searchLogs', methods=['POST'])
+def searchLogs():
+    payload = request.data
+    payload = json.loads(payload)
+    searchTerm = payload
+    return jsonify(log.searchLogs(searchTerm))
+    
 if __name__ == '__main__':
     app.run()
 

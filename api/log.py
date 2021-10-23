@@ -14,3 +14,6 @@ def updateLog(logId, description, category, contents, date):
 
 def deleteLog(logId):
     return logdb.deleteLog(logId)
+
+def searchLogs(searchTerm):
+    return logdb.searchLogs(searchTerm)
