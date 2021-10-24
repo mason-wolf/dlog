@@ -60,4 +60,5 @@ textarea:focus {
 
 .card-header {
     border-bottom: none;
+    background-color: #fff;
 }
