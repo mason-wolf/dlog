@@ -16,10 +16,35 @@
     width: 100%;
 }
 
-.done {
+.action {
     border:1px solid #ccc;
     border-radius: 15px;
     padding:.5em;
-    margin-top:-15px;
     text-decoration: none;
+    cursor: pointer;
+    background-color: #fff;
+    color: rgb(65, 65, 228);
+    width: 125px;
+}
+
+.deleteTask {
+    float:right;
+    margin-top:-10px;
+    margin-left:15px;
+    color:red;
+    cursor: pointer;
+}
+
+td {
+    width: auto;
+    padding: .5em;
+}
+
+.status td {
+    width: 250px;
+}
+
+table {
+    table-layout: auto;
+    width: 100%;
 }

@@ -1,6 +1,6 @@
 <div class="container">
     <div class="col-12" style="margin-top:50px;padding-left:1em;">
-        <a href="">Back</a>
+        <a href="" (click)="back()">Back</a>
     </div>  
 </div>
 <div *ngIf="!editMode" class="container d-flex">
@@ -28,6 +28,12 @@
         </div>
         <div class="field-container">
             <label><h2>Category</h2></label><input type="text" [(ngModel)]="log.Category" class="field">
+        </div>
+        <div class="field-container">
+            <label><h2>Project</h2></label>
+            <select [(ngModel)]="log.Project_ID" class="field">
+                <option *ngFor="let project of projects;" [value]="project.ID"> {{ project.project_name }} </option>
+            </select>
         </div>
         <div class="field-container">
             <label><h2>Date</h2></label><br><input type="date" [(ngModel)]="log.Date" class="field">

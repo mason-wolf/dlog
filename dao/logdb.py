@@ -12,7 +12,7 @@ def getLogById(logId):
     return result
 
 def getLogsByProjectId(projectId):
-    query = "SELECT * FROM log WHERE Project_ID=%s"
+    query = "SELECT * FROM log WHERE Project_ID=%s ORDER BY Date DESC"
     result = db.executeQuery(query, (projectId, ))
     return result
 
@@ -63,4 +63,9 @@ def getLogCategories():
 def getLogsByCategory(category):
     query = "SELECT * FROM log WHERE Category LIKE %s"
     result = db.executeQuery(query, ("%" + category + "%",))
+    return result
+
+def getLogsByDate(startDate, endDate):
+    query = "SELECT * FROM log WHERE (Date BETWEEN %s AND %s) ORDER BY Date DESC"
+    result = db.executeQuery(query, (startDate, endDate),)
     return result

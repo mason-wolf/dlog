@@ -22,12 +22,21 @@ export class DashboardComponent implements OnInit {
   displayedColumns : string[] = ["date", "description", "category"];
   @ViewChild(MatPaginator) paginator : MatPaginator;
   
-  constructor(private logService : LogService, private router : Router) {
+  constructor(private logService : LogService, private router : Router) {}
 
+   searchByDate() {
+    this.startDate = formatDate(this.startDate, "MM-dd-yyyy", "en-us");
+    this.endDate = formatDate(this.endDate, "MM-dd-yyyy", "en-us");
+    this.router.navigate(['/logs-by-date/', this.startDate, this.endDate])
+   }
+
+  ngOnInit(): void {
     this.logService.getLogs().subscribe(value => {
       value.forEach(log => {
         log.Date = formatDate(log.Date, "MMMM dd, yyyy", "en-us");
-        this.logs.push(log);
+        if (log.Status != "PENDING") {
+          this.logs.push(log);
+        }
       })
 
       this.logs.sort((currentLog, nextLog) => (currentLog.Id > nextLog.Id ? -1 : 1));
@@ -42,19 +51,6 @@ export class DashboardComponent implements OnInit {
       }
       )
     })
-
-    // this.logService.getLogsByDate('10-01-2021', '10-20-2021').subscribe(value => {
-    //   console.log(value);
-    // })
-   }
-
-   searchByDate() {
-    this.startDate = formatDate(this.startDate, "MM-dd-yyyy", "en-us");
-    this.endDate = formatDate(this.endDate, "MM-dd-yyyy", "en-us");
-    this.router.navigate(['/logs-by-date/', this.startDate, this.endDate])
-   }
-
-  ngOnInit(): void {
   }
 
 }

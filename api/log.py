@@ -29,6 +29,3 @@ def getLogsByCategory(category):
 
 def getLogsByDate(startDate, endDate):
     return logdb.getLogsByDate(startDate, endDate)
-
-def getProjects(startDate, endDate):
-    return logdb.getProjects(startDate, endDate)

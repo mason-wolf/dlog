@@ -16,7 +16,11 @@ export class ProjectService {
   }
 
   addProject(projectName) {
-    console.log(projectName)
     return this.httpClient.post(this.serverURL + "addProject", JSON.stringify(projectName))
   }
+
+  deleteProject(projectId) {
+    return this.httpClient.post(this.serverURL + "deleteProject", JSON.stringify(projectId))
+  }
+  
 }

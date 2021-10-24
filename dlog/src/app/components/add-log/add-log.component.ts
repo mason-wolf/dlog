@@ -37,7 +37,12 @@ export class AddLogComponent implements OnInit {
     else {
       logObj["Date"] =  formatDate(logObj["Date"], "MM-dd-yyyy", "en-us");
     }
-    this.logService.addLog(logObj)
-    this.router.navigate([''])
+    this.logService.addLog(logObj).subscribe(value =>{
+      this.router.routeReuseStrategy.shouldReuseRoute = function () {
+        return false;
+      }
+      this.router.onSameUrlNavigation = 'reload';
+      this.router.navigate(['/']);
+    })
   }
 }

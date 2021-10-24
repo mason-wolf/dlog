@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LogService } from '../../services/log.service';
 import { DomSanitizer } from '@angular/platform-browser';
+import { Location } from '@angular/common'
+import { ProjectService } from 'src/app/services/project.service';
 
 @Component({
   selector: 'app-view-log',
@@ -14,10 +16,12 @@ export class ViewLogComponent implements OnInit {
   logId : number;
   editMode = false;
   innerHTML : any;
+  projects : string[] = [];
 
   log = {}
 
-  constructor(private route : ActivatedRoute, private logService : LogService, private sanitizer : DomSanitizer, private router : Router) { 
+  constructor(private route : ActivatedRoute, private logService : LogService, private sanitizer : DomSanitizer, private router : Router,
+    private location : Location, private projectService : ProjectService) { 
     const id = this.route.snapshot.paramMap.get('logId');
 
     if (id != null) {
@@ -28,6 +32,13 @@ export class ViewLogComponent implements OnInit {
         this.log["Date"] = formatDate(this.log["Date"], "MMMM dd, yyyy", "en-us");
         this.innerHTML = this.sanitizer.bypassSecurityTrustHtml(this.log["Contents"]);
       })
+
+      this.projectService.getProjects().subscribe(value =>{
+        value.forEach(value => {
+          this.projects.push(value);
+        })
+      })
+
     }
   }
 
@@ -44,20 +55,28 @@ export class ViewLogComponent implements OnInit {
 
   updateLog() {
     this.log["Date"] = formatDate(this.log["Date"], "MM-dd-yyyy", "en-us");
-    this.logService.updateLog(this.log)
+    this.log["Status"] = "COMPLETED";
+    console.log(this.log)
+    this.logService.updateLog(this.log).subscribe(value => {
+      console.log(value)
+    })
     this.toggleEdit();
   }
 
   deleteLog() {
-    this.logService.deleteLog(this.log["Id"]);
-    this.router.routeReuseStrategy.shouldReuseRoute = function () {
-      return false;
-    }
-    this.router.onSameUrlNavigation = 'reload';
-    this.router.navigate(['/']);
+    this.logService.deleteLog(this.log["Id"]).subscribe(value => {
+      this.router.routeReuseStrategy.shouldReuseRoute = function () {
+        return false;
+      }
+      this.router.onSameUrlNavigation = 'reload';
+      this.router.navigate(['/']);
+    });
   }
   
   ngOnInit(): void {
   }
 
+  back() {
+    this.location.back();
+  }
 }

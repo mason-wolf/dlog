@@ -22,6 +22,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { LogsByDateComponent } from './components/logs-by-date/logs-by-date.component';
 import { TasksComponent } from './components/tasks/tasks.component';
 import {MatMenuModule} from '@angular/material/menu';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import {MatMenuModule} from '@angular/material/menu';
     MatDatepickerModule,
     MatInputModule,
     MatNativeDateModule ,
-    MatMenuModule
+    MatMenuModule,
+    MatExpansionModule
   ],
   providers: [],
   bootstrap: [AppComponent]

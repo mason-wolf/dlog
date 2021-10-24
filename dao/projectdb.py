@@ -7,7 +7,6 @@ def getProjects():
     return result
 
 def addProject(projectName):
-    print(projectName)
     query = "INSERT INTO project (project_name) VALUES (%s)"
     conn = db.getConnection()
     cursor = conn.cursor()
@@ -18,3 +17,15 @@ def addProject(projectName):
     cursor.close()
     conn.close()
     return json.dumps(result)
+
+def deleteProject(projectId):
+    # Delete the project first.
+    query = "DELETE FROM project WHERE ID=%s"
+    conn = db.getConnection()
+    cursor = conn.cursor()
+    result = ""
+    cursor.execute(query, (projectId,))
+    conn.commit()
+    result = "Project deleted."
+    cursor.close()
+    conn.close()

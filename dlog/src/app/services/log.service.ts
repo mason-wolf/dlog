@@ -32,9 +32,7 @@ export class LogService {
   }
 
   addLog(log : any) {
-    return this.httpClient.post(this.serverURL + "addLog",  JSON.stringify(log)).subscribe(value => {
-      console.log(value);
-    });
+    return this.httpClient.post(this.serverURL + "addLog",  JSON.stringify(log));
   }
 
   getLogById(logId) : Observable<any> {
@@ -42,15 +40,11 @@ export class LogService {
   }
 
   updateLog(log : any) {
-    return this.httpClient.post(this.serverURL + "updateLog", JSON.stringify(log)).subscribe(value => {
-      console.log(value);
-    })
+    return this.httpClient.post(this.serverURL + "updateLog", JSON.stringify(log));
   }
 
   deleteLog(logId) {
-    return this.httpClient.post(this.serverURL + "deleteLog", logId).subscribe(value => {
-      console.log(value)
-    });
+    return this.httpClient.post(this.serverURL + "deleteLog", logId);
   }
 
   searchLogs(searchTerm) {

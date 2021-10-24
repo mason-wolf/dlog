@@ -95,6 +95,13 @@ def addProject():
     projectName = payload
     return jsonify(project.addProject(projectName))
 
+@app.route('/deleteProject', methods=['POST'])
+def deleteProject():
+    payload = request.data
+    payload = json.loads(payload)
+    Id = payload
+    return jsonify(project.deleteProject(Id))
+
 if __name__ == '__main__':
     app.run()
 
