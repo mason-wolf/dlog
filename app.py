@@ -103,5 +103,5 @@ def deleteProject():
     return jsonify(project.deleteProject(Id))
 
 if __name__ == '__main__':
-    app.run()
-
+    app.run(host="localhost", port=80)
+    

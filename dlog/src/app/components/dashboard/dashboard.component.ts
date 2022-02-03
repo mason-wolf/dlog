@@ -4,6 +4,8 @@ import { MatPaginator } from '@angular/material/paginator';
 import { LogService } from '../../services/log.service';
 import { formatDate } from '@angular/common';
 import { Router } from '@angular/router';
+import { TemplateRef } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-dashboard',
@@ -19,10 +21,12 @@ export class DashboardComponent implements OnInit {
   endDate : string;
 
   dataSource = new MatTableDataSource();
-  displayedColumns : string[] = ["date", "description", "category"];
+  displayedColumns : string[] = ["date", "description", "category", "project_name"];
   @ViewChild(MatPaginator) paginator : MatPaginator;
   
-  constructor(private logService : LogService, private router : Router) {}
+  @ViewChild('addLogDialog') addLogDialog: TemplateRef<any>;
+
+  constructor(private logService : LogService, private router : Router, private dialog: MatDialog) {}
 
    searchByDate() {
     this.startDate = formatDate(this.startDate, "MM-dd-yyyy", "en-us");
@@ -40,6 +44,7 @@ export class DashboardComponent implements OnInit {
       })
 
       this.logs.sort((currentLog, nextLog) => (currentLog.Id > nextLog.Id ? -1 : 1));
+      console.log(this.logs);
       this.dataSource.data = this.logs;
       this.dataSource.paginator = this.paginator;
     })
@@ -53,4 +58,9 @@ export class DashboardComponent implements OnInit {
     })
   }
 
+  showLogDialog() {
+    let logDialog = this.dialog.open(this.addLogDialog, {
+      width: '40%'
+    });
+  }
 }

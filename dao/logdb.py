@@ -2,7 +2,7 @@ import db
 import json
 
 def getLogs():
-    query = "SELECT * FROM log"
+    query = "SELECT * FROM log l LEFT JOIN project p on l.Project_ID = p.ID"
     result = db.executeQuery(query, ())
     return json.dumps(result)
 

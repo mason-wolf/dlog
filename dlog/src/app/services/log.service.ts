@@ -9,7 +9,7 @@ export class LogService {
 
   constructor(private httpClient : HttpClient) { }
 
-  serverURL = "http://localhost:5000/"
+  serverURL = "http://localhost:80/"
 
   getLogs() : Observable<any> {
     return this.httpClient.get(this.serverURL + "getLogs");
