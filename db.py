@@ -1,10 +1,10 @@
-from configparser import DEFAULTSECT
 import mysql.connector
 
 def getConnection():
     db = mysql.connector.connect(
-        host = "localhost",
+        host = "host.docker.internal",
         user="root",
+        password="",
         database="dlog"
     )
     return db

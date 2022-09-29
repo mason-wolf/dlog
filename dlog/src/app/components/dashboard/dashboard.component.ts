@@ -44,7 +44,6 @@ export class DashboardComponent implements OnInit {
       })
 
       this.logs.sort((currentLog, nextLog) => (currentLog.Id > nextLog.Id ? -1 : 1));
-      console.log(this.logs);
       this.dataSource.data = this.logs;
       this.dataSource.paginator = this.paginator;
     })

@@ -1,2 +1,0 @@
-start api
-start webapp

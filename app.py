@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, send_from_directory
 from flask import json
 from flask.json import jsonify
 from api import log, project
@@ -7,6 +7,14 @@ from flask_cors import CORS, cross_origin
 app = Flask(__name__)
 cors = CORS(app, resources={r"/*": {"origins": "*"}})
 app.config['CORS_HEADERS'] = 'Content-Type'
+
+@app.route('/<path:path>', methods=['GET'])
+def static_proxy(path):
+  return send_from_directory('templates', path)
+
+@app.route('/')
+def root():
+  return send_from_directory('templates', 'index.html')
 
 @app.route('/getLogs')
 def getLogs():
