@@ -1,4 +1,5 @@
-from flask import Flask, request, send_from_directory
+import os
+from flask import Flask, render_template, request, send_from_directory
 from flask import json
 from flask.json import jsonify
 from api import log, project
@@ -8,13 +9,16 @@ app = Flask(__name__)
 cors = CORS(app, resources={r"/*": {"origins": "*"}})
 app.config['CORS_HEADERS'] = 'Content-Type'
 
-@app.route('/<path:path>', methods=['GET'])
+# Handle Angular Routing
+@app.route('/', defaults={'path': ''})
+@app.route('/<string:path>')
+@app.route('/<path:path>')
 def static_proxy(path):
-  return send_from_directory('templates', path)
-
-@app.route('/')
-def root():
-  return send_from_directory('templates', 'index.html')
+    if os.path.isfile('templates/' + path):
+        return send_from_directory('templates', path)
+    else:
+        return send_from_directory("templates", "index.html")
+        
 
 @app.route('/getLogs')
 def getLogs():
